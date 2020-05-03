@@ -1,0 +1,23 @@
+ class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+       
+    
+      Map<Character,Integer>map=new HashMap<>();
+        
+      
+        for(char a:magazine.toCharArray())
+            map.put(a,map.getOrDefault(a,0)+1);
+        
+        
+        for(char a:ransomNote.toCharArray())
+        {
+            if(map.get(a)==null||map.get(a)<=0)return false;
+            map.put(a,map.get(a)-1);
+
+        }
+    
+        
+        return true;
+        
+    }
+}
