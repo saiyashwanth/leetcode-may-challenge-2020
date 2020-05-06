@@ -1,0 +1,29 @@
+ class Solution {
+    
+  /*  public boolean verifyMajority(int[]nums,int ele){
+        int count=0;
+        for(int i=0;i<nums.length;i++)if(nums[i]==ele)count++;
+        return count>nums.length/2;
+    }*/
+    
+    //This is is candidate selection algorithm
+    public int majorityElement(int[] nums) {
+     int   majority_index=0,count=1;
+        for(int i=1;i<nums.length;i++){
+            if(nums[i]==nums[majority_index])count++;
+            else{
+                count--;
+                if(count==0){majority_index=i;count=1;}
+            }
+                
+        }
+        //here in question they said assume majority element always exists we are not verifying after applying algorithm for sam reason
+        //if(verifyMajority(nums,nums[majority_index]))
+            return nums[majority_index];
+       // else return -1;
+        
+        
+        
+        
+    }
+}
