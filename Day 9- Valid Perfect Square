@@ -1,0 +1,7 @@
+
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        double pSquare=Math.sqrt(num);
+        return Math.ceil(pSquare)-Math.floor(pSquare)==0;
+    }
+}
