@@ -1,0 +1,13 @@
+
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+    	if(nums==null||nums.length==0)return 0;
+     int exor=0;
+        for(int num:nums)
+            exor^=num;
+        return exor;
+        
+      
+        
+    }
+}
