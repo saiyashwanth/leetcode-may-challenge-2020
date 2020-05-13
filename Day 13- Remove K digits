@@ -1,0 +1,49 @@
+
+class Solution {
+    public String removeKdigits(String num, int k) {
+        
+      /*  //first appraoch which is not giving best run time to tried to optimize it
+        StringBuilder br=new StringBuilder(num);
+        //StringBuilder s=new StringBuilder(num);
+        if (br.length()==k)return "0";
+        
+        for(int i=0;i<k;i++){
+            int j=0;
+            while(j<br.length()-1&&br.charAt(j)<=br.charAt(j+1))j++;
+            br.delete(j,j+1);
+
+        }
+        while(br.length()>1&&br.charAt(0)=='0' )br.delete(0,1);
+        if(br.length()==0)return "0";
+        return br.toString();*/
+        
+        
+        if(num.length()==k)return "0";
+        Stack<Character> st=new Stack<>();
+        int i=0;
+        
+        for(int j=0;j<k;j++){
+            
+            if(i>=num.length()||!st.isEmpty()&&st.peek()>num.charAt(i)){
+                st.pop();continue;
+            }
+            
+             while(i<num.length()-1&&num.charAt(i)<=num.charAt(i+1)){st.push(num.charAt(i));i++;}i++;
+        }
+        
+        while(i<num.length()){
+            st.push(num.charAt(i));i++;
+        }
+        String s="";
+        while(!st.isEmpty())
+        {
+            s=st.pop()+s;
+        }
+    i=0;
+        while(i<s.length()-1&&s.charAt(i)=='0')i++;
+        return s.substring(i);
+    }
+   
+   
+  
+}
