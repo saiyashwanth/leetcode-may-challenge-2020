@@ -1,0 +1,22 @@
+ 
+class Solution {
+    public int maxSubarraySumCircular(int[] A) {
+       int maxSoFar=Integer.MIN_VALUE,minSoFar=Integer.MAX_VALUE,maxEndHere=0,minEndHere=0,totalSum=0;
+        
+        for(int i=0;i<A.length;i++){
+            maxEndHere+=A[i];
+            maxSoFar=maxEndHere>maxSoFar?maxEndHere:maxSoFar;
+            maxEndHere=maxEndHere>0?maxEndHere:0;
+            minEndHere+=A[i];
+            minSoFar=minEndHere<minSoFar?minEndHere:minSoFar;
+            minEndHere=minEndHere<0?minEndHere:0;
+            totalSum+=A[i];
+            
+            
+        }
+        int result=totalSum-minSoFar;
+        return maxSoFar<0?maxSoFar:maxSoFar>result?maxSoFar:result;
+        
+        
+    }
+}
