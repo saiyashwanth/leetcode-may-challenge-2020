@@ -1,0 +1,58 @@
+
+ class StockSpanner {
+    
+    
+    /*
+Stack<Integer>prices,span;
+    public StockSpanner() {
+        prices=new Stack<>();
+        span=new Stack<>();
+        
+    }
+    
+    public int next(int price) {
+        int w=1;
+        while(!prices.isEmpty()&&prices.peek()<=price)
+        {
+            prices.pop();
+            w+=span.pop();
+        }
+        
+        prices.push(price);
+        span.push(w);
+        return w;
+        
+    }*/
+    //optimized the above solution to get the best run time on leetcode
+    
+    int []prices,span;
+    int top;
+     public StockSpanner() {
+         prices=new int[10000];
+         span=new int[10000];
+         top=-1;
+        
+    }
+     public int next(int price) {
+         if(price<=0)return 1;
+        int w=1;
+        while(top>=0&&prices[top]<=price)
+        {
+            w+=span[top--];
+            
+        }
+        top++;
+         prices[top]=price;
+       
+         span[top]=w;
+        return w;
+        
+    }
+    
+}
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner obj = new StockSpanner();
+ * int param_1 = obj.next(price);
+ */
