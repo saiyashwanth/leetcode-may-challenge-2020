@@ -1,0 +1,17 @@
+ public int maxUncrossedLines(int[] A, int[] B) {
+        int lenA=A.length;
+        int lenB=B.length;
+        int [][]cache=new int[lenA+1][lenB+1];
+        for(int i=0;i<=lenA;i++){
+            for(int j=0;j<=lenB;j++){
+                if(i==0||j==0)
+                    cache[i][j]=0;
+               else if(A[i-1]==B[j-1])
+                    cache[i][j]=cache[i-1][j-1]+1;
+                else
+                    cache[i][j]=Math.max(cache[i-1][j],cache[i][j-1]);
+            }
+        }
+            return cache[lenA][lenB];
+    
+    }
