@@ -1,0 +1,21 @@
+ class Solution {
+    public int[] countBits(int num) {
+        if(num<0)return new int[1];
+        int count=0;
+        int []res=new int[num+1];
+        res[0]=0;
+      if(num>=1){
+        for(int i=1;i<=num;i++){
+            int t=i;
+            while(t>0){
+                t=t&(t-1);
+                count++;
+            }
+            res[i]=count;
+            count=0;
+        
+        }
+    }
+        return res;
+    }
+}
